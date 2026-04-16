@@ -2,7 +2,7 @@
 
 API REST desenvolvida com Spring Boot para gerenciamento de clientes.
 
-O projeto foi constru�do com foco em aprendizado de backend, cobrindo opera��es de CRUD, pagina��o, filtros, tratamento de erros HTTP e valida��es de regra de neg�cio.
+O projeto foi construido com foco em aprendizado de backend, cobrindo operacoes de CRUD, paginacao, filtros, tratamento de erros HTTP e validacoes de regra de negocio.
 
 ## Tecnologias
 
@@ -16,22 +16,22 @@ O projeto foi constru�do com foco em aprendizado de backend, cobrindo opera�
 ## Funcionalidades
 
 - Criar clientes
-- Listar clientes com pagina��o
+- Listar clientes com paginacao
 - Filtrar clientes por CPF e email
 - Atualizar clientes por id
 - Remover clientes por id
 - Impedir duplicidade de CPF e email
-- Retornar status HTTP coerentes para erro de valida��o e conflito de dados
+- Retornar status HTTP coerentes para erro de validacao e conflito de dados
 
 ## Estrutura do projeto
 
-O projeto segue uma separa��o simples por responsabilidade:
+O projeto segue uma separacao simples por responsabilidade:
 
-- `controller`: recebe as requisi��es HTTP e monta as respostas
-- `service`: concentra as regras de neg�cio
+- `controller`: recebe as requisicoes HTTP e monta as respostas
+- `service`: concentra as regras de negocio
 - `repository`: faz o acesso aos dados com Spring Data JPA
 - `entity`: representa a tabela de clientes
-- `dto`: define os objetos de entrada e sa�da da API
+- `dto`: define os objetos de entrada e saida da API
 
 ## Endpoints
 
@@ -53,17 +53,17 @@ Exemplo de body:
 Resposta esperada:
 
 - `201 Created` quando o cliente for criado com sucesso
-- `409 Conflict` quando CPF ou email j� estiverem cadastrados
+- `409 Conflict` quando CPF ou email ja estiverem cadastrados
 
 ### Listar clientes
 
 `GET /customers`
 
-Par�metros suportados:
+Parametros suportados:
 
-- `page` - p�gina desejada. Padr�o: `0`
-- `pageSize` - quantidade de registros por p�gina. Padr�o: `10`
-- `orderBy` - ordena��o por data de cria��o: `asc` ou `desc`
+- `page` - pagina desejada. Padrao: `0`
+- `pageSize` - quantidade de registros por pagina. Padrao: `10`
+- `orderBy` - ordenacao por data de criacao: `asc` ou `desc`
 - `cpf` - filtro opcional por CPF
 - `email` - filtro opcional por email
 
@@ -76,7 +76,7 @@ GET /customers?page=0&pageSize=10&orderBy=desc&cpf=12345678900
 Resposta esperada:
 
 - `200 OK` com lista paginada de clientes
-- `400 Bad Request` quando `page`, `pageSize` ou `orderBy` forem inv�lidos
+- `400 Bad Request` quando `page`, `pageSize` ou `orderBy` forem invalidos
 
 ### Atualizar cliente
 
@@ -94,9 +94,9 @@ Exemplo de body:
 Comportamento atual:
 
 - atualiza apenas os campos enviados no body
-- atualiza o campo de data de modifica��o
-- retorna `404 Not Found` se o cliente n�o existir
-- retorna `409 Conflict` se o novo CPF ou email j� pertencer a outro cliente
+- atualiza o campo de data de modificacao
+- retorna `404 Not Found` se o cliente nao existir
+- retorna `409 Conflict` se o novo CPF ou email ja pertencer a outro cliente
 
 ### Deletar cliente
 
@@ -105,26 +105,26 @@ Comportamento atual:
 Resposta esperada:
 
 - `204 No Content` quando o cliente for removido com sucesso
-- `404 Not Found` quando o cliente n�o existir
+- `404 Not Found` quando o cliente nao existir
 
-## Regras de neg�cio importantes
+## Regras de negocio importantes
 
-- `id` � gerado automaticamente pelo banco
-- `cpf` deve ser �nico
-- `email` deve ser �nico
-- a unicidade � protegida tanto na aplica��o quanto no banco de dados
-- par�metros inv�lidos de pagina��o retornam erro `400 Bad Request`
+- `id` e gerado automaticamente pelo banco
+- `cpf` deve ser unico
+- `email` deve ser unico
+- a unicidade e protegida tanto na aplicacao quanto no banco de dados
+- parametros invalidos de paginacao retornam erro `400 Bad Request`
 
 ## Como executar o projeto
 
-### Pr�-requisitos
+### Pre-requisitos
 
 - Java 17 instalado
-- Maven Wrapper dispon�vel no projeto
+- Maven Wrapper disponivel no projeto
 
 ### Passos
 
-1. Clone o reposit�rio
+1. Clone o repositorio
 2. Entre na pasta do projeto
 3. Execute o comando:
 
@@ -138,33 +138,33 @@ No Windows, use:
 mvnw.cmd spring-boot:run
 ```
 
-A aplica��o ser� iniciada localmente.
+A aplicacao sera iniciada localmente.
 
 ## Banco de dados
 
-O projeto usa H2 como banco em mem�ria durante a execu��o.
+O projeto usa H2 como banco em memoria durante a execucao.
 
-Se desejar, voc� pode evoluir o projeto depois para PostgreSQL ou MySQL.
+Se desejar, voce pode evoluir o projeto depois para PostgreSQL ou MySQL.
 
 ## Aprendizados praticados neste projeto
 
-- constru��o de API REST com Spring Boot
-- modelagem b�sica de entidade
+- construcao de API REST com Spring Boot
+- modelagem basica de entidade
 - uso de DTOs
-- pagina��o com `PageRequest`
+- paginacao com `PageRequest`
 - filtros com `@Query`
-- valida��o de entrada
+- validacao de entrada
 - tratamento de erros HTTP
-- preven��o de duplicidade de dados
-- organiza��o em camadas
+- prevencao de duplicidade de dados
+- organizacao em camadas
 
 ## Melhorias futuras
 
-- adicionar testes unit�rios e de integra��o
+- adicionar testes unitarios e de integracao
 - criar exceptions customizadas para a API
-- adicionar documenta��o com Swagger/OpenAPI
+- adicionar documentacao com Swagger/OpenAPI
 - integrar com banco relacional persistente
-- implementar valida��es com Bean Validation
+- implementar validacoes com Bean Validation
 - criar endpoint para buscar cliente por id
 
 ## Autor
